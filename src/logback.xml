@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- inizio della configurazione del logger -->
+<configuration>
+	<!-- configurazione del sistema di output -->
+	<appender name="CONSOLE_OUTPUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<!-- configurazione di un particolare "appender" -->
+		<encoder>
+			<!-- modalità di produzione dell'output -->
+			<pattern>
+				<!-- un messaggio e un ritorno a capo -->
+				%d{HH:mm:ss} [%level] %-5logger &gt; %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.hibernate" level="INFO" additivity="false">
+		<appender-ref ref="CONSOLE_OUTPUT"></appender-ref>
+	</logger>
+
+	<!-- definiamo i livelli di output desiderati nei nostri packages -->
+	<root level="debug">
+		<!-- definiamo quali appender utilizzare per questo livello -->
+		<appender-ref ref="CONSOLE_OUTPUT"></appender-ref>
+	</root>
+</configuration>
